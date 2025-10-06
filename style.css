@@ -1,0 +1,693 @@
+/* ==============================
+   FUENTES Y BASE
+============================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  margin: 0;
+  transition: background-color 0.6s, color 0.6s;
+}
+
+/* ==============================
+   MODO OSCURO
+============================== */
+body.dark-mode {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #b4b6b8;
+}
+
+/* ==============================
+   SWITCH MODO OSCURO/CLARO
+============================== */
+.theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2000;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 26px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #007aff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* ==============================
+   HEADER
+============================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #007aff;
+  color: white;
+  transition: background 0.6s, color 0.6s;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  gap: 20px; /* espacio entre elementos del header */
+}
+
+header h1 {
+  font-size: 1.8em;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separa los links del header y el toggle */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 0; /* se usa gap ahora */
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+body.dark-mode header {
+  background-color: #161b22;
+  color: #e6edf3;
+}
+
+body.dark-mode nav a {
+  color: #e6edf3;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #007aff, #4da6ff, #66b0ff);
+  color: white;
+  transition: background 0.6s, color 0.6s;
+}
+
+
+body.dark-mode .hero {
+  background: #161b22;
+  color: #e6edf3;
+}
+
+.hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+/* ==============================
+   SERVICIOS
+============================== */
+.services {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.services h2 {
+  color: #007aff;
+  margin-bottom: 40px;
+  font-size: 2em;
+}
+
+body.dark-mode .services h2 {
+  color: #fff;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 280px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.6s, color 0.6s;
+  text-align: center;
+}
+
+body.dark-mode .card {
+  background-color: #1e293b;
+  color: #e6edf3;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card i {
+  color: #007aff;
+  margin-bottom: 10px;
+}
+
+body.dark-mode .card i {
+  color: #3b82f6;
+}
+
+.card h3 {
+  margin: 15px 0;
+  color: #007aff;
+}
+
+body.dark-mode .card h3 {
+  color: #3b82f6;
+}
+
+.card p {
+  font-size: 0.95em;
+  line-height: 1.5em;
+}
+
+/* ==============================
+   SOBRE NOSOTROS & CONTACTO
+============================== */
+.about, .contact {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(112, 112, 112, 0.1);
+  text-align: center;
+  transition: background-color 0.6s, color 0.6s;
+}
+
+body.dark-mode .about,
+body.dark-mode .contact {
+  background-color: #1e293b;
+  color: #e6edf3;
+}
+
+.about h2, .contact h2 {
+  color: #3a99ff;
+}
+
+body.dark-mode .about h2,
+body.dark-mode .contact h2 {
+  color: #3b82f6;
+}
+
+.contact input, .contact textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  margin-bottom: 10px;
+  transition: background-color 0.6s, color 0.6s, border-color 0.6s;
+}
+
+body.dark-mode .contact input,
+body.dark-mode .contact textarea {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+}
+
+.contact button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s, background-color 0.6s;
+}
+
+.contact button:hover {
+  background-color: #005bb5;
+}
+
+body.dark-mode .contact button {
+  background-color: #3b82f6;
+}
+
+body.dark-mode .contact button:hover {
+  background-color: #2563eb;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background-color: #007aff;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  transition: background-color 0.6s, color 0.6s;
+}
+
+body.dark-mode footer {
+  background-color: #161b22;
+  color: #e6edf3;
+}
+
+/* ==============================
+   LOGIN / REGISTRO
+============================== */
+
+body.dark-mode form input:hover,
+body.dark-mode form textarea:hover {
+  border-color: #3b82f6; /* borde azul al pasar el mouse */
+}
+
+
+/* Inputs y textarea en modo claro */
+form input, form textarea {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  background-color: #fff;  /* fondo claro */
+  color: #111;             /* texto oscuro */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Inputs y textarea en modo oscuro */
+body.dark-mode form input,
+body.dark-mode form textarea {
+  background-color: #0d1117; /* fondo oscuro */
+  color: #e6edf3;            /* texto claro */
+  border: 1px solid #30363d; /* borde gris oscuro */
+}
+
+
+
+body.dark-mode .container {
+  background-color: #1e293b; 
+  color: #e6edf3; 
+  
+}
+
+body.dark-mode .form-container {
+  background-color: #1e293b;  /* fondo gris oscuro */
+  color: #e6edf3;             /* texto de formularios */
+  box-shadow: 0 5px 15px rgba(112, 112, 112, 0.1); /* sombra suave */
+}
+
+
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  width: 850px;
+  max-width: 90%;
+  min-height: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  width: 50%;
+  padding: 50px;
+  color: #575758;
+}
+
+.sign-in-container { left: 0; z-index: 2; }
+.sign-up-container { left: 0; opacity: 0; z-index: 1; }
+
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+form input, form textarea {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 12px 40px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #007aff;
+  color: white;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #005bb5;
+}
+
+.logo {
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+/* Overlay */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(to right, #007aff, #4aa1ff);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel h1 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.overlay-panel p {
+  font-size: 1em;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 992px) {
+  header, .hero, .services, .about, .contact {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    min-height: auto;
+  }
+
+  .overlay-container { display: none; }
+  .form-container { position: relative; width: 100%; transform: none !important; opacity: 1 !important; }
+  #signUpForm { display: none; }
+  body.show-signup #signInForm { display: none; }
+  body.show-signup #signUpForm { display: block; }
+  form button { width: 100%; }
+  .logo { width: 70px; }
+}
+
+/* === Modo claro y modo oscuro === */
+body.light-mode {
+  background: #fff;
+  color: #111;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ==============================
+   LOGIN / REGISTRO MÓVIL CORRECTO
+============================== */
+
+/* Por defecto, ocultar registro en móvil */
+#signUpForm {
+  display: none;
+}
+
+/* Cuando se activa show-signup en body */
+body.show-signup #signInForm {
+  display: none;  /* oculta login */
+}
+
+body.show-signup #signUpForm {
+  display: block; /* muestra registro */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .sign-in-container, .sign-up-container {
+    position: relative;
+    width: 100%;
+    left: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 1;
+  }
+
+  .overlay-container {
+    display: none; /* oculta overlay en móvil */
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .logo {
+    width: 70px;
+  }
+}
+
+/* ==============================
+   OVERLAY / LOGIN-REGISTRO CORREGIDO
+============================== */
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  z-index: 10; /* aseguramos que el texto quede sobre el overlay */
+  opacity: 1;  /* siempre visible */
+}
+
+.container.right-panel-active .overlay-left {
+  transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Ajustes de modo oscuro para overlay */
+body.dark-mode .overlay {
+  background: linear-gradient(to right, #007aff, #4aa1ff);
+}
+
+body.dark-mode .overlay-panel {
+  color: #e6edf3;
+}
+
+.overlay-panel h1 {
+  margin-bottom: 15px;
+}
+
+.overlay-panel p {
+  margin-bottom: 25px; /* separa párrafo del botón */
+  line-height: 1.5em;   /* evita que se superpongan los textos */
+}
+
+/* Botones ghost del overlay */
+button.ghost {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 35px;
+  border-radius: 25px;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+  cursor: pointer;
+}
+
+button.ghost:hover {
+  background-color: #fff;
+  color: #007aff;
+}
+
+/* Formularios */
+.sign-in-container {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-up-container {
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Escritorio */
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* Móvil */
+@media (max-width: 768px) {
+  .sign-in-container, .sign-up-container {
+    position: relative;
+    width: 100%;
+    left: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: 1;
+  }
+
+  #signUpForm { display: none; }
+  body.show-signup #signInForm { display: none; }
+  body.show-signup #signUpForm { display: block; }
+}
+
+/* Iconos servicios estilo azul iPhone con efecto hover */
+.service-cards .card i {
+  color: #007aff; /* azul iPhone */
+  transition: transform 0.3s, color 0.3s;
+}
+
+.service-cards .card:hover i {
+  transform: scale(1.3); /* aumenta tamaño al pasar el mouse */
+  color: #4aa1ff; /* cambio de tono azul */
+}
